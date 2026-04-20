@@ -1,0 +1,10 @@
+torch
+torchvision
+albumentations
+opencv-python-headless
+numpy
+matplotlib
+scikit-image
+tqdm
+Pillow
+scipy
