@@ -3,7 +3,7 @@ import os
 IMAGE_SIZE = 256
 BATCH_SIZE = 16
 NUM_WORKERS = 2
-EPOCHS = 50
+EPOCHS = 10
 LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 1e-5
 PATIENCE = 10
@@ -14,9 +14,10 @@ TRAIN_RATIO = 0.70
 VAL_RATIO = 0.15
 TEST_RATIO = 0.15
 
-DATA_ROOT = "/kaggle/input/isic-2018-challenge"
-IMAGE_DIR = os.path.join(DATA_ROOT, "ISIC2018_Task1-2_Training_Input_x2")
-MASK_DIR = os.path.join(DATA_ROOT, "ISIC2018_Task1_Training_GroundTruth_x2")
+DATA_ROOT = "/kaggle/input/datasets/tschandl/isic2018-challenge-task1-data-segmentation" 
+
+IMAGE_DIR = "/kaggle/input/datasets/tschandl/isic2018-challenge-task1-data-segmentation/ISIC2018_Task1-2_Training_Input"
+MASK_DIR = "/kaggle/input/datasets/tschandl/isic2018-challenge-task1-data-segmentation/ISIC2018_Task1_Training_GroundTruth"
 
 OUTPUT_DIR = "./outputs"
 CHECKPOINT_DIR = os.path.join(OUTPUT_DIR, "checkpoints")
