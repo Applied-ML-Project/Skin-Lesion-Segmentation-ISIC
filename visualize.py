@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import torch
 import config
 
@@ -52,27 +53,32 @@ def plot_predictions(model, dataset, model_name, n=8, save=True):
 
 
 def plot_training_curves(history1, history2, name1="Attention U-Net", name2="TransUNet", save=True):
+    # Set a professional seaborn theme for LaTeX reports
+    sns.set_theme(style="whitegrid", context="paper", font_scale=1.2, 
+                  rc={"lines.linewidth": 2, "axes.edgecolor": "black"})
+
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-    axes[0].plot(history1["train_loss"], label=f"{name1} Train")
-    axes[0].plot(history1["val_loss"], label=f"{name1} Val", linestyle="--")
-    axes[0].plot(history2["train_loss"], label=f"{name2} Train")
-    axes[0].plot(history2["val_loss"], label=f"{name2} Val", linestyle="--")
+    # Loss plot
+    axes[0].plot(history1["train_loss"], label=f"{name1} Train", color="blue", alpha=0.9)
+    axes[0].plot(history1["val_loss"], label=f"{name1} Val", color="blue", linestyle="--", alpha=0.9)
+    axes[0].plot(history2["train_loss"], label=f"{name2} Train", color="red", alpha=0.9)
+    axes[0].plot(history2["val_loss"], label=f"{name2} Val", color="red", linestyle="--", alpha=0.9)
     axes[0].set_title("Loss")
     axes[0].set_xlabel("Epoch")
     axes[0].set_ylabel("Loss")
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
+    axes[0].legend(frameon=True, shadow=True)
 
-    axes[1].plot(history1["train_dice"], label=f"{name1} Train")
-    axes[1].plot(history1["val_dice"], label=f"{name1} Val", linestyle="--")
-    axes[1].plot(history2["train_dice"], label=f"{name2} Train")
-    axes[1].plot(history2["val_dice"], label=f"{name2} Val", linestyle="--")
+    # Dice plot
+    axes[1].plot(history1["train_dice"], label=f"{name1} Train", color="blue", alpha=0.9)
+    axes[1].plot(history1["val_dice"], label=f"{name1} Val", color="blue", linestyle="--", alpha=0.9)
+    axes[1].plot(history2["train_dice"], label=f"{name2} Train", color="red", alpha=0.9)
+    axes[1].plot(history2["val_dice"], label=f"{name2} Val", color="red", linestyle="--", alpha=0.9)
     axes[1].set_title("Dice Score")
     axes[1].set_xlabel("Epoch")
     axes[1].set_ylabel("Dice")
-    axes[1].legend()
-    axes[1].grid(True, alpha=0.3)
+    axes[1].set_ylabel("Dice")
+    axes[1].legend(frameon=True, shadow=True)
 
     plt.tight_layout()
 

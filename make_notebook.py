@@ -28,7 +28,7 @@ cells.append({
     "execution_count": None,
     "metadata": {},
     "outputs": [],
-    "source": ["!pip install albumentations opencv-python-headless scikit-image tqdm scipy matplotlib\n"]
+    "source": ["!pip install albumentations opencv-python-headless scikit-image tqdm scipy matplotlib seaborn\n"]
 })
 
 for filename in files:
